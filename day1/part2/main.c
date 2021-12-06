@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-void shift(int *arr) {
+static inline void shift(int *arr) {
   arr[0] = arr[1]; arr[1] = arr[2]; arr[2] = 0;
 }
 
-int sum(int *arr) {
+static inline int sum(int *arr) {
   return arr[0] + arr[1] + arr[2];
 }
 
@@ -13,7 +13,7 @@ int main()
   FILE *fp;
   char buff[16];
   int ints[3] = {0};
-  int lastSum, nextSum, count = 0;
+  register int lastSum, nextSum, count = 0;
 
   fp = fopen("input.txt", "r");
   // populate the first 3 values
